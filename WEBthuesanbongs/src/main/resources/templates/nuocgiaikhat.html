@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Old Traford | Nước giải khát</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/asset/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/style.css" type="text/css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href=""><img src="/asset/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li><a href="http://localhost:8080">Trang chủ</a></li>
+                        <li><a th:href="@{/DanhSachSan}">Sân bóng</a></li>
+                        <li class="active"><a th:href="@{/DanhSachNuoc}">Nước</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="/asset/img/icon/search.png" alt=""></a>
+                    <a href="#"><img src="/asset/img/icon/heart.png" alt=""></a>
+                    <a href="#"><img src="/asset/img/icon/cart.png" alt=""> <span>0</span></a>
+                    <div class="price">$0.00</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+<!-- Header Section End -->
+
+<!-- Hero Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Nước giải khát</h4>
+                    <div class="breadcrumb__links">
+                        <a href="index.html">Trang chủ</a>
+                        <span>Nước giải khát</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+
+                </div>
+            </div> -->
+            <div class="col-lg-12">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Showing 1–12 of 126 results</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="shop__sidebar">
+                                <div class="shop__sidebar__search">
+                                    <form action="#">
+                                        <input type="text" placeholder="Search...">
+                                        <button type="submit"><span class="icon_search"></span></button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6" th:each="item:${nuocGiaiKhats.content}">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" th:attr="data-setbg= ${item.anhNuoc}">
+                                <!--                                <ul class="product__hover">-->
+                                <!--                                    <li><a th:href="@{/ChiTietNuoc(id=${item.id})}"><img src="/asset/img/icon/search.png" alt=""></a></li>-->
+                                <!--                                </ul>-->
+                            </div>
+                            <div class="product__item__text">
+                                <h6 th:text="${item.tenNuoc}"></h6>
+                                <a th:href="@{/ChiTietNuoc(id=${item.id}, idPhieuDatSan=${idPhieuDatSan })}"
+                                   class="add-cart">Xem chi tiết</a>
+
+                                <h5 th:text="${item.donGia} + ' VND/Lon'"></h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" th:href="@{/DanhSachNuoc(page=0)}">First</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" th:if="${nuocGiaiKhats.number > 0}"
+                                                         th:href="@{/DanhSachNuoc(page=${nuocGiaiKhats.number - 1})}">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" th:unless="${nuocGiaiKhats.number > 0}"
+                                                         th:href="@{/DanhSachNuoc(page=0)}">Previous</a></li>
+                                <li class="page-item"><a class="page-link"
+                                                         th:if="${nuocGiaiKhats.number < (nuocGiaiKhats.totalPages - 1)}"
+                                                         th:href="@{/DanhSachNuoc(page=${nuocGiaiKhats.number + 1})}">Next</a>
+                                </li>
+                                <li class="page-item"><a class="page-link"
+                                                         th:unless="${nuocGiaiKhats.number < (nuocGiaiKhats.totalPages - 1)}"
+                                                         th:href="@{/DanhSachNuoc(page=${nuocGiaiKhats.totalPages - 1})}">Next</a>
+                                </li>
+                                <li class="page-item"><a class="page-link"
+                                                         th:href="@{/DanhSachNuoc(page=${nuocGiaiKhats.totalPages - 1})}">Last</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="/asset/img/logo.png" alt=""></a>
+                    </div>
+                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <a href="#"><img src="/asset/img/payment.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Clothing Store</a></li>
+                        <li><a href="#">Trending Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                    <h6>NewLetter</h6>
+                    <div class="footer__newslatter">
+                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your email">
+                            <button type="submit"><span class="icon_mail_alt"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        2020
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script src="/asset/js/jquery-3.3.1.min.js"></script>
+<script src="/asset/js/bootstrap.min.js"></script>
+<script src="/asset/js/jquery.nice-select.min.js"></script>
+<script src="/asset/js/jquery.nicescroll.min.js"></script>
+<script src="/asset/js/jquery.magnific-popup.min.js"></script>
+<script src="/asset/js/jquery.countdown.min.js"></script>
+<script src="/asset/js/jquery.slicknav.js"></script>
+<script src="/asset/js/mixitup.min.js"></script>
+<script src="/asset/js/owl.carousel.min.js"></script>
+<script src="/asset/js/main.js"></script>
+</body>
+
+</html>

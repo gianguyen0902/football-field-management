@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Old Trafford | Nước giải khát</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/asset/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/style.css" type="text/css">
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href=""><img src="/asset/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li><a href="http://localhost:8080">Trang chủ</a></li>
+                        <li class="active"><a th:href="@{/DanhSachSan}">Sân bóng</a></li>
+                        <li><a th:href="@{/DanhSachNuoc}">Nước</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="/asset/img/icon/search.png" alt=""></a>
+                    <a href="#"><img src="/asset/img/icon/heart.png" alt=""></a>
+                    <a href="#"><img src="/asset/img/icon/cart.png" alt=""> <span>0</span></a>
+                    <div class="price">$0.00</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+
+<!-- Header Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Shopping Cart</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Trang chủ</a>
+                        <a href="./shop.html">Nước giải khát</a>
+                        <span>Chi tiết nước giải khát</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="shop-details" th:object="${nuocgiaikhat}">
+    <div class="product__details__pic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__breadcrumb">
+                        <a href="./index.html">Trang chủ</a>
+                        <a href="./sanbong.html">Nước giải khát</a>
+                        <span>Chi tiết nước giải khát</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                        <div class="product__details__pic__item">
+                            <img th:src="${nuocgiaikhat.anhNuoc}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4 th:text="${nuocgiaikhat.tenNuoc}"></h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span> - 5 lượt đánh giá</span>
+                        </div>
+                        <h3 th:text="${nuocgiaikhat.donGia}+' VND/ Lon'"></h3>
+                        <p>Bổ sung các chất vitamin và các hàm lượng thiết yếu như Vitamin C, vitamin A, vitamin E và
+                            các chất cần thiết trong trái cây. Giúp cho người tiêu dùng tiêu thụ được nhiều trái cây
+                            hơn, nước trái cây còn giúp cho cơ thể được thải độc.
+
+                        </p>
+
+
+                        <div class="product__details__cart__option">
+                            <!--                            <form>-->
+                            <!--                                <input type="date" name="" id="">-->
+                            <!--                                <input type="time">-->
+                            <!--                            </form>-->
+                            <form action="/user/datnuoc" method="post">
+
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input name="soLuong" type="text" value="1"/>
+
+                                </div>
+                            </div>
+                            <button class="primary-btn" type="submit">Đặt nước</button>
+                                <input name="idNuoc" hidden type="text" th:value="${nuocgiaikhat.id}"/>
+                                <input name="idPhieuDatSan" hidden type="text" th:value="${idPhieuDatSan}"/>
+                            </form>
+                        </div>
+
+                        <div class="product__details__last__option">
+                            <h5><span>Các hình thức thanh toán an toàn</span></h5>
+                            <img src="/asset/img/shop-details/details-payment.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="/asset/img/footer-logo.png" alt=""></a>
+                    </div>
+                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <a href="#"><img src="/asset/img/payment.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Clothing Store</a></li>
+                        <li><a href="#">Trending Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivary</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                    <h6>NewLetter</h6>
+                    <div class="footer__newslatter">
+                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your email">
+                            <button type="submit"><span class="icon_mail_alt"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        2020
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script src="/asset/js/jquery-3.3.1.min.js"></script>
+<script src="/asset/js/bootstrap.min.js"></script>
+<script src="/asset/js/jquery.nice-select.min.js"></script>
+<script src="/asset/js/jquery.nicescroll.min.js"></script>
+<script src="/asset/js/jquery.magnific-popup.min.js"></script>
+<script src="/asset/js/jquery.countdown.min.js"></script>
+<script src="/asset/js/jquery.slicknav.js"></script>
+<script src="/asset/js/mixitup.min.js"></script>
+<script src="/asset/js/owl.carousel.min.js"></script>
+<script src="/asset/js/main.js"></script>
+</body>
+
+</html>
